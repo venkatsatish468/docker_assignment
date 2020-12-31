@@ -6,20 +6,31 @@ services:
     ports:
       - 80:80
     volumes:
-      - /var/www/html/modules
-      - /var/www/html/profiles
-      - /var/www/html/themes
-      - /var/www/html/sites
+      - drupal_modules:/var/www/html/modules
+      - drupal_profiles:/var/www/html/profiles
+      - drupal_themes:/var/www/html/themes
+      - drupal_sites:/var/www/html/sites
     networks:
-      - test
+      - app
+    restart: always
  
   postgres:
     image: postgres:10
     environment:
       POSTGRES_PASSWORD: example
+    volumes:
+      - db_data:/var/lib/postgresql/data
     networks:
-      - test
+      - app
+    restart: always
+
+volumes:
+  drupal_modules:
+  drupal_profiles:
+  drupal_themes:
+  drupal_sites:
+  db_data:
 
 networks:
-  test:
+  app:
     driver: bridge
