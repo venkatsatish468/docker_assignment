@@ -1,6 +1,6 @@
 # Docker Assignment - 2
 
-Create a docker-compose.yaml file for the following Multi-container app (Drupal postgres)
+Create a docker-compose.yaml file for the following multi-container app (Drupal and Postgres)
 
   Container-1 (front-end):
 
